@@ -41,7 +41,7 @@ namespace BetterHealthCareToolbar
             }
             return UIView.GetAView().defaultAtlas;
         }
-		public static void SetToolbarTabSprite(UIButton button, HealthCareCategory cat)
+		public static void SetToolbarTabSprite(GeneratedGroupPanel __instance, ref UIButton button, HealthCareCategory cat)
 		{
 			const int SIZE = 31;
 			UISprite buttonSprite = button.AddUIComponent<UISprite>();
@@ -51,12 +51,12 @@ namespace BetterHealthCareToolbar
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
-					spriteNames[0] = "healthcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("Icons/healthcare.png", "HealthCare", SIZE, SIZE, spriteNames);
+					buttonSprite = __instance.Find<UISprite>("HealthCareIcon");
+					buttonSprite.spriteName = "healthcare";
 					break;
 				case HealthCareCategory.DeathCare:
-					spriteNames[0] = "deathcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("Icons/deathcare.png", "DeathCare", SIZE, SIZE, spriteNames);
+					buttonSprite = __instance.Find<UISprite>("DeathCareIcon");
+					buttonSprite.spriteName = "deathcare";
 					break;
 				case HealthCareCategory.ChildCare:
 					spriteNames[0] = "childcare";
