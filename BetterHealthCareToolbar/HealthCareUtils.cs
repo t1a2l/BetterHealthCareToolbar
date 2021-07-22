@@ -45,30 +45,33 @@ namespace BetterHealthCareToolbar
 		{
 			const int SIZE = 31;
 			UISprite buttonSprite = button.AddUIComponent<UISprite>();
-            buttonSprite.size = new Vector2(24f, 24f);
-            buttonSprite.relativePosition = new Vector2(4f, 5f);
 			string[] spriteNames = new string[1];
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
 					spriteNames[0] = "healthcare";
 					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("healthcare.png", "HealthCare", SIZE, SIZE, spriteNames);
+					buttonSprite.spriteName = "healthcare";
 					break;
 				case HealthCareCategory.DeathCare:
 					spriteNames[0] = "deathcare";
 					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("deathcare.png", "DeathCare", SIZE, SIZE, spriteNames);
+					buttonSprite.spriteName = "deathcare";
 					break;
 				case HealthCareCategory.ChildCare:
 					spriteNames[0] = "childcare";
 					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("childcare.png", "ChildCare", SIZE, SIZE, spriteNames);
+					buttonSprite.spriteName = "childcare";
 					break;
 				case HealthCareCategory.ElderCare:
 					spriteNames[0] = "eldercare";
 					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("eldercare.png", "ElderCare", SIZE, SIZE, spriteNames);
+					buttonSprite.spriteName = "eldercare";
 					break;
 				case HealthCareCategory.RecreationalCare:
 					spriteNames[0] = "recreationalcare";
 					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("recreationalcare.png", "RecreationalCare", SIZE, SIZE, spriteNames);
+					buttonSprite.spriteName = "recreationalcare";
 					break;
 				default:
 					break;
