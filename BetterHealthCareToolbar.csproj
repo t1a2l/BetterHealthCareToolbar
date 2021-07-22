@@ -24,6 +24,20 @@
     <Copy SourceFiles="@(ModFiles)" DestinationFolder="$(ModDirectory)" />
   </Target>
   <ItemGroup>
+    <None Remove="BetterHealthCareToolbar\Utils\Icons\childcare.png" />
+    <None Remove="BetterHealthCareToolbar\Utils\Icons\deathcare.png" />
+    <None Remove="BetterHealthCareToolbar\Utils\Icons\eldercare.png" />
+    <None Remove="BetterHealthCareToolbar\Utils\Icons\healthcare.png" />
+    <None Remove="BetterHealthCareToolbar\Utils\Icons\recreationalcare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BetterHealthCareToolbar\Utils\Icons\childcare.png" />
+    <EmbeddedResource Include="BetterHealthCareToolbar\Utils\Icons\deathcare.png" />
+    <EmbeddedResource Include="BetterHealthCareToolbar\Utils\Icons\eldercare.png" />
+    <EmbeddedResource Include="BetterHealthCareToolbar\Utils\Icons\healthcare.png" />
+    <EmbeddedResource Include="BetterHealthCareToolbar\Utils\Icons\recreationalcare.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="CitiesHarmony.API" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>

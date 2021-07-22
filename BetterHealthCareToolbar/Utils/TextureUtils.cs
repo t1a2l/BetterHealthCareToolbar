@@ -11,7 +11,7 @@ namespace BetterHealthCareToolbar
 {
 	internal static class TextureUtils
 	{
-        static string PATH => typeof(TextureUtils).Assembly.GetName().Name + ".Resources.";
+        static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Icons.";
         static string ModPath => GetPlugin().modPath;
         public static string FILE_PATH = ModPath;
         public static bool EmbededResources = true;
@@ -71,7 +71,7 @@ namespace BetterHealthCareToolbar
         public static Stream GetFileStream(string file) {
             try {
                 string path = Path.Combine(FILE_PATH, file);
-                return File.OpenRead(path) ?? throw new Exception(path + "not find");
+                return File.OpenRead(path) ?? throw new Exception(path + "not found");
             } catch (Exception ex) {
                 LogHelper.Error(ex.ToString());
                 throw ex;
@@ -85,9 +85,10 @@ namespace BetterHealthCareToolbar
 
         public static Stream GetManifestResourceStream(string file) {
             try {
+                var d = Assembly.GetExecutingAssembly().GetManifestResourceNames();
                 string path = string.Concat(PATH, file);
                 return Assembly.GetExecutingAssembly().GetManifestResourceStream(path)
-                    ?? throw new Exception(path + " not find");
+                    ?? throw new Exception(path + " not found");
             } catch (Exception ex) {
                 LogHelper.Error(ex.ToString());
                 throw ex;

@@ -51,24 +51,24 @@ namespace BetterHealthCareToolbar
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
-					buttonSprite = __instance.Find<UISprite>("HealthCareIcon");
-					buttonSprite.spriteName = "healthcare";
+					spriteNames[0] = "healthcare";
+					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("healthcare.png", "HealthCare", SIZE, SIZE, spriteNames);
 					break;
 				case HealthCareCategory.DeathCare:
-					buttonSprite = __instance.Find<UISprite>("DeathCareIcon");
-					buttonSprite.spriteName = "deathcare";
+					spriteNames[0] = "deathcare";
+					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("deathcare.png", "DeathCare", SIZE, SIZE, spriteNames);
 					break;
 				case HealthCareCategory.ChildCare:
 					spriteNames[0] = "childcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("Icons/childcare.png", "ChildCare", SIZE, SIZE, spriteNames);
+					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("childcare.png", "ChildCare", SIZE, SIZE, spriteNames);
 					break;
 				case HealthCareCategory.ElderCare:
 					spriteNames[0] = "eldercare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("Icons/eldercare.png", "ElderCare", SIZE, SIZE, spriteNames);
+					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("eldercare.png", "ElderCare", SIZE, SIZE, spriteNames);
 					break;
 				case HealthCareCategory.RecreationalCare:
 					spriteNames[0] = "recreationalcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("Icons/recreationalcare.png", "RecreationalCare", SIZE, SIZE, spriteNames);
+					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("recreationalcare.png", "RecreationalCare", SIZE, SIZE, spriteNames);
 					break;
 				default:
 					break;
