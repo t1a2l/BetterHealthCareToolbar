@@ -47,7 +47,7 @@ namespace BetterHealthCareToolbar
 						return;
 					}
 					button.tooltip = HealthCareUtils.GetTooltip(cat);
-					HealthCareUtils.SetToolbarTabSprite(__instance, ref button, cat);
+					HealthCareUtils.SetToolbarTabSprite(ref button, cat);
 				}
 			}
 		}

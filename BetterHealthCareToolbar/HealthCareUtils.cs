@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
 using ColossalFramework.UI;
 using UnityEngine;
 
@@ -17,9 +16,6 @@ namespace BetterHealthCareToolbar
 
 	static class HealthCareUtils
 	{
-
-		
-
 		public static bool IsDefaultHealthCareCategory(string cat)
 		{
 			switch (cat)
@@ -41,41 +37,85 @@ namespace BetterHealthCareToolbar
             }
             return UIView.GetAView().defaultAtlas;
         }
-		public static void SetToolbarTabSprite(GeneratedGroupPanel __instance, ref UIButton button, HealthCareCategory cat)
+		public static void SetToolbarTabSprite(ref UIButton button, HealthCareCategory cat)
 		{
-			const int SIZE = 31;
-			UISprite buttonSprite = button.AddUIComponent<UISprite>();
-			string[] spriteNames = new string[1];
+			var SpriteNames = new string[6];
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
-					spriteNames[0] = "healthcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("healthcare.png", "HealthCare", SIZE, SIZE, spriteNames);
-					buttonSprite.spriteName = "healthcare";
+					string[] HealthCareSpriteNames =
+                    {
+						"HealthCare",
+						"SubBarButtonBase",
+						"SubBarButtonBasePressed",
+						"SubBarButtonBaseDisabled",
+						"SubBarButtonBaseFocused",
+						"SubBarButtonBaseHovered"
+                    };
+					button.atlas = TextureUtils.CreateTextureAtlas("healthcare.png", "HealthCare", HealthCareSpriteNames);
+					SpriteNames = HealthCareSpriteNames;
 					break;
 				case HealthCareCategory.DeathCare:
-					spriteNames[0] = "deathcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("deathcare.png", "DeathCare", SIZE, SIZE, spriteNames);
-					buttonSprite.spriteName = "deathcare";
+					string[] DeathCareSpriteNames =
+                    {
+						"DeathCare",
+						"SubBarButtonBase",
+						"SubBarButtonBasePressed",
+						"SubBarButtonBaseDisabled",
+						"SubBarButtonBaseFocused",
+						"SubBarButtonBaseHovered"
+                    };
+					button.atlas = TextureUtils.CreateTextureAtlas("deathcare.png", "DeathCare", DeathCareSpriteNames);
+					SpriteNames = DeathCareSpriteNames;
 					break;
 				case HealthCareCategory.ChildCare:
-					spriteNames[0] = "childcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("childcare.png", "ChildCare", SIZE, SIZE, spriteNames);
-					buttonSprite.spriteName = "childcare";
+					string[] ChildCareSpriteNames =
+                    {
+						"ChildCare",
+						"SubBarButtonBase",
+						"SubBarButtonBasePressed",
+						"SubBarButtonBaseDisabled",
+						"SubBarButtonBaseFocused",
+						"SubBarButtonBaseHovered"
+                    };
+					button.atlas = TextureUtils.CreateTextureAtlas("childcare.png", "ChildCare", ChildCareSpriteNames);
+					SpriteNames = ChildCareSpriteNames;
 					break;
 				case HealthCareCategory.ElderCare:
-					spriteNames[0] = "eldercare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("eldercare.png", "ElderCare", SIZE, SIZE, spriteNames);
-					buttonSprite.spriteName = "eldercare";
+					string[] ElderCareSpriteNames =
+                    {
+						"ElderCare",
+						"SubBarButtonBase",
+						"SubBarButtonBasePressed",
+						"SubBarButtonBaseDisabled",
+						"SubBarButtonBaseFocused",
+						"SubBarButtonBaseHovered"
+                    };
+					button.atlas = TextureUtils.CreateTextureAtlas("eldercare.png", "ElderCare", ElderCareSpriteNames);
+					SpriteNames = ElderCareSpriteNames;
 					break;
 				case HealthCareCategory.RecreationalCare:
-					spriteNames[0] = "recreationalcare";
-					buttonSprite.atlas = TextureUtils.CreateTextureAtlas("recreationalcare.png", "RecreationalCare", SIZE, SIZE, spriteNames);
-					buttonSprite.spriteName = "recreationalcare";
+					string[] RecreationalCareSpriteNames =
+                    {
+						"RecreationalCare",
+						"SubBarButtonBase",
+						"SubBarButtonBasePressed",
+						"SubBarButtonBaseDisabled",
+						"SubBarButtonBaseFocused",
+						"SubBarButtonBaseHovered"
+                    };
+					button.atlas = TextureUtils.CreateTextureAtlas("recreationalcare.png", "RecreationalCare", RecreationalCareSpriteNames);
+					SpriteNames = RecreationalCareSpriteNames;
 					break;
 				default:
 					break;
 			}
+			button.normalFgSprite = button.pressedFgSprite = button.disabledFgSprite = button.focusedFgSprite = button.hoveredFgSprite = SpriteNames[0];
+			button.normalBgSprite = SpriteNames[1];
+			button.pressedBgSprite = SpriteNames[2];
+			button.disabledBgSprite = SpriteNames[3];
+			button.focusedBgSprite = SpriteNames[4];
+			button.hoveredBgSprite = SpriteNames[5];
 		}
 
 		public static string GetTooltip(HealthCareCategory cat)
