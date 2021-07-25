@@ -42,10 +42,10 @@ namespace BetterHealthCareToolbar
 		public static void SetToolbarTabSprite(ref UIButton button, HealthCareCategory cat)
 		{
 			var SpriteNames = new string[] {
-				"ChildCare",
-				"DeathCare",
-				"ElderCare",
 				"HealthCare",
+				"DeathCare",
+				"ChildCare",
+				"ElderCare",
 				"RecreationalCare",
 				"SubBarButtonBase",
 				"SubBarButtonBaseDisabled",
@@ -53,13 +53,7 @@ namespace BetterHealthCareToolbar
 				"SubBarButtonBaseHovered",
 				"SubBarButtonBasePressed"
 			};
-			for(int i = 0; i < SpriteNames.Length; i++)
-            {
-				newTextures[i] = TextureUtils.GetTextureFromFile(SpriteNames[i]);
-            }
-			UITextureAtlas atlas = TextureUtils.GetAtlas("HealthCareAtlas");
-			TextureUtils.AddTexturesInAtlas(atlas, newTextures, false);
-			button.atlas = atlas;
+			button.atlas = TextureUtils.CreateTextureAtlas("HealthCareAtlas.png", "HealthCareAtlas", SpriteNames);
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:

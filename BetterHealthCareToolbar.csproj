@@ -24,12 +24,7 @@
     <Copy SourceFiles="@(ModFiles)" DestinationFolder="$(ModDirectory)" />
   </Target>
   <ItemGroup>
-    <Compile Remove="BetterHealthCareToolbar\Utils\Atlas\**" />
-    <Compile Remove="BetterHealthCareToolbar\Utils\Icons\**" />
-    <EmbeddedResource Remove="BetterHealthCareToolbar\Utils\Atlas\**" />
-    <EmbeddedResource Remove="BetterHealthCareToolbar\Utils\Icons\**" />
-    <None Remove="BetterHealthCareToolbar\Utils\Atlas\**" />
-    <None Remove="BetterHealthCareToolbar\Utils\Icons\**" />
+    <PackageReference Include="CitiesHarmony.API" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -50,35 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Update="BetterHealthCareToolbar\Utils\Images\ChildCare.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\DeathCare.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\ElderCare.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\HealthCare.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\RecreationalCare.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\SubBarButtonBase.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\SubBarButtonBaseDisabled.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\SubBarButtonBaseFocused.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\SubBarButtonBaseHovered.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="BetterHealthCareToolbar\Utils\Images\SubBarButtonBasePressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Folder Include="BetterHealthCareToolbar\Utils\Atlas\" />
   </ItemGroup>
 </Project>
