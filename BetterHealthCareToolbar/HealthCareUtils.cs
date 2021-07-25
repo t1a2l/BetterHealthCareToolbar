@@ -16,6 +16,8 @@ namespace BetterHealthCareToolbar
 
 	static class HealthCareUtils
 	{
+		public static Texture2D[] newTextures = new Texture2D[10];
+
 		public static bool IsDefaultHealthCareCategory(string cat)
 		{
 			switch (cat)
@@ -51,7 +53,13 @@ namespace BetterHealthCareToolbar
 				"SubBarButtonBaseHovered",
 				"SubBarButtonBasePressed"
 			};
-			button.atlas = TextureUtils.CreateTextureAtlas("HealthCareAtlas.png", "HealthCareAtlas", SpriteNames);
+			for(int i = 0; i < SpriteNames.Length; i++)
+            {
+				newTextures[i] = TextureUtils.GetTextureFromFile(SpriteNames[i]);
+            }
+			UITextureAtlas atlas = TextureUtils.GetAtlas("HealthCareAtlas");
+			TextureUtils.AddTexturesInAtlas(atlas, newTextures, false);
+			button.atlas = atlas;
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
