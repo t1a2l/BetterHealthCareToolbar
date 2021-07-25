@@ -11,7 +11,7 @@ namespace BetterHealthCareToolbar
 {
 	internal static class TextureUtils
 	{
-        static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Icons.";
+        static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Atlas.";
         static string ModPath => GetPlugin().modPath;
         public static string FILE_PATH = ModPath;
         public static bool EmbededResources = true;
@@ -41,7 +41,15 @@ namespace BetterHealthCareToolbar
 
             int n = spriteNames.Length;
             for (int i = 0; i < n; i++) {
-                float num = 1f / (float)spriteNames.Length;
+                float num;
+                if(i < 5)
+                {
+                    num = 1f / (float)15;
+                } 
+                else
+                {
+                    num = 2f / (float)15;
+                }
                 UITextureAtlas.SpriteInfo spriteInfo = new UITextureAtlas.SpriteInfo {
                     name = spriteNames[i],
                     texture = texture2D,

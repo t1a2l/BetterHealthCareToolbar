@@ -8,7 +8,7 @@ namespace BetterHealthCareToolbar
     {
         string IUserMod.Name => "Better HealthCare Toolbar Mod";
 
-        string IUserMod.Description => "Seperate the HealthCare Toolbar into five categories - HealthCare, DeathCare, ChildCare, ElderCare and RecreationalCare";
+        string IUserMod.Description => "Separate the HealthCare Toolbar into five categories - HealthCare, DeathCare, ChildCare, ElderCare and RecreationalCare";
         
         public void OnEnabled() {
              HarmonyHelper.DoOnHarmonyReady(() => Patcher.PatchAll());
