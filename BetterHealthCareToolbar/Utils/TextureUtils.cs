@@ -10,13 +10,11 @@ namespace BetterHealthCareToolbar
 {
 	internal static class TextureUtils
 	{
-        static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Atlas.";
         static string ModPath => GetPlugin().modPath;
-        public static string FILE_PATH = ModPath;
+        public static string FILE_PATH = ModPath + "\\BetterHealthCareToolbar\\Utils\\Images\\";
         public static bool EmbededResources = false;
        
         static PluginManager man => PluginManager.instance;
-
 
 
         public static void AddTexturesInAtlas(UITextureAtlas atlas, Texture2D[] newTextures, bool locked = false) 
@@ -57,7 +55,7 @@ namespace BetterHealthCareToolbar
                 atlas.sprites.Add(new UITextureAtlas.SpriteInfo {
                     texture = textures[i],
                     name = textures[i].name,
-                    border = (spriteInfo != null) ? spriteInfo.border : new RectOffset(),
+                    border = (spriteInfo != null) ? spriteInfo.border : (i < 5 ? new RectOffset(1, 1, 0, 0) : new RectOffset()),
                     region = regions[i]
                 });
             }
