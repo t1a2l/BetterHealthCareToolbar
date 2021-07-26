@@ -90,7 +90,7 @@ namespace BetterHealthCareToolbar
 				case HealthCareCategory.HealthCare:
 					return "HealthCare - Hospitals, clinics and basically all doctor services";
 				case HealthCareCategory.DeathCare:
-					return "DeathcCare - Cemeteries, crematoriums and everything releated to the after life";
+					return "DeathCare - Cemeteries, crematoriums and everything releated to the after life";
 				case HealthCareCategory.ChildCare:
 					return "ChildCare - Orphanage, group home, child support center, taking care of the city children";
 				case HealthCareCategory.ElderCare:
