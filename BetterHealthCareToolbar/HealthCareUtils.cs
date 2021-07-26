@@ -88,15 +88,15 @@ namespace BetterHealthCareToolbar
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
-					return "Hospitals, clinics and basically all doctor services";
+					return "HealthCare - Hospitals, clinics and basically all doctor services";
 				case HealthCareCategory.DeathCare:
-					return "Cemeteries, crematoriums and everything releated to the after life";
+					return "DeathcCare - Cemeteries, crematoriums and everything releated to the after life";
 				case HealthCareCategory.ChildCare:
-					return "Orphanage, group home, child support center, taking care of the city children";
+					return "ChildCare - Orphanage, group home, child support center, taking care of the city children";
 				case HealthCareCategory.ElderCare:
-					return "Nursing homes, Assisted living, taking care of the city elders";
+					return "ElderCare - Nursing homes, assisted living, taking care of the city elders";
 				case HealthCareCategory.RecreationalCare:
-					return "Pools, gyms, saunas, community buildings for the neighborhood";
+					return "RecreationalCare - Pools, gyms, saunas, community buildings for the neighborhood";
 				default:
 					break;
 			}

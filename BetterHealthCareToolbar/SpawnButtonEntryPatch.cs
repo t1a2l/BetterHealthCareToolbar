@@ -22,26 +22,26 @@ namespace BetterHealthCareToolbar
 			}
 			string mainCategoryId = "MAIN_CATEGORY";
 			var SpriteNames = new string[] {
-				"HealthCareBase",
-				"HealthCareDisabled",
-				"HealthCareFocused",
-				"HealthCareHovered",
-				"HealthCarePressed",
-				"DeathCareBase",
-				"DeathCareDisabled",
-				"DeathCareFocused",
-				"DeathCareHovered",
-				"DeathCarePressed",
 				"ChildCareBase",
 				"ChildCareDisabled",
 				"ChildCareFocused",
 				"ChildCareHovered",
 				"ChildCarePressed",
+				"DeathCareBase",
+				"DeathCareDisabled",
+				"DeathCareFocused",
+				"DeathCareHovered",
+				"DeathCarePressed",
 				"ElderCareBase",
 				"ElderCareDisabled",
 				"ElderCareFocused",
 				"ElderCareHovered",
 				"ElderCarePressed",
+				"HealthCareBase",
+				"HealthCareDisabled",
+				"HealthCareFocused",
+				"HealthCareHovered",
+				"HealthCarePressed",
 				"RecreationalCareBase",
 				"RecreationalCareDisabled",
 				"RecreationalCareFocused",
@@ -59,12 +59,12 @@ namespace BetterHealthCareToolbar
 				TextureUtils.InitialiseAtlas(path, "HealthCareAtlas");
 				for(int i = 0; i < 25; i++)
 				{
-					TextureUtils.AddSpriteToAtlas(new Rect(32 * i, 0, 32, 22), SpriteNames[i], "HealthCareAtlas");
+					TextureUtils.AddSpriteToAtlas(new Rect(32 * i, 0, 32, 25), SpriteNames[i], "HealthCareAtlas");
 				}
 
 				for(int i = 25; i < SpriteNames.Length; i++)
 				{
-					TextureUtils.AddSpriteToAtlas(new Rect(58 * i - 130, 0, 58, 22), SpriteNames[i], "HealthCareAtlas");
+					TextureUtils.AddSpriteToAtlas(new Rect(58 * i - 650, 0, 58, 25), SpriteNames[i], "HealthCareAtlas");
 				}
             }
 			foreach (UIComponent tab in ___m_Strip.tabs)
