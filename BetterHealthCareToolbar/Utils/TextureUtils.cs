@@ -13,7 +13,7 @@ namespace BetterHealthCareToolbar
 	internal static class TextureUtils
 	{
         internal static Dictionary<string, UITextureAtlas> m_atlasStore = new Dictionary<string, UITextureAtlas>();
-       // static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Atlas.";
+        static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Atlas.";
         static string ModPath => GetPlugin().modPath;
         public static string FILE_PATH = ModPath;
         public static bool EmbededResources = true;
@@ -70,54 +70,33 @@ namespace BetterHealthCareToolbar
             return true;
         }
 
-        public static bool InitialiseAtlas(string texturePath, string atlasName)
+        public static bool InitialiseAtlas(string atlasName)
         {
             bool createdAtlas = false;
+            Shader shader = Shader.Find("UI/Default UI Shader");
 
-            if (texturePath != null)
+            if (shader != null)
             {
-                Shader shader = Shader.Find("UI/Default UI Shader");
+                Texture2D spriteTexture = GetTextureFromAssemblyManifest("HealthCareAtlas.png");
+                FixTransparency(spriteTexture);
 
-                if (shader != null)
+                Material atlasMaterial = new Material(shader)
                 {
-                    if (System.IO.File.Exists(texturePath))
-                    {
-                        Texture2D spriteTexture = new Texture2D(2, 2);
-                        FileStream fileStream = new FileStream(texturePath, FileMode.Open, FileAccess.Read);
-                        byte[] imageData = new byte[fileStream.Length];
+                    mainTexture = spriteTexture
+                };
 
-                        fileStream.Read(imageData, 0, (int)fileStream.Length);
-                        spriteTexture.LoadImage(imageData);
-                        FixTransparency(spriteTexture);
+                UITextureAtlas atlas = ScriptableObject.CreateInstance<UITextureAtlas>();
+                atlas.name = atlasName;
+                atlas.material = atlasMaterial;
 
-                        Material atlasMaterial = new Material(shader)
-                        {
-                            mainTexture = spriteTexture
-                        };
+                m_atlasStore.Add(atlasName, atlas);
 
-                        UITextureAtlas atlas = ScriptableObject.CreateInstance<UITextureAtlas>();
-                        atlas.name = atlasName;
-                        atlas.material = atlasMaterial;
-
-                        m_atlasStore.Add(atlasName, atlas);
-
-                        createdAtlas = true;
-                    }
-                    else
-                    {
-                        Debug.LogError("SpriteUtilities: Could not find atlas at " + texturePath);
-                    }
-                }
-                else
-                {
-                    Debug.LogError("SpriteUtilities: Couldn't find the default UI Shader!");
-                }
+                createdAtlas = true;
             }
             else
             {
-                Debug.LogError("SpriteUtilities: Could not find the mod path, which is odd.");
+                Debug.LogError("SpriteUtilities: Couldn't find the default UI Shader!");
             }
-
             return createdAtlas;
         }
 
@@ -157,8 +136,33 @@ namespace BetterHealthCareToolbar
             return returnValue;
         }
 
+        public static Texture2D GetTextureFromAssemblyManifest(string file) {
+            using (Stream stream = GetManifestResourceStream(file))
+                return GetTextureFromStream(stream);
+        }
 
+        public static Stream GetManifestResourceStream(string file) {
+            try {
+                var d = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+                string path = string.Concat(PATH, file);
+                return Assembly.GetExecutingAssembly().GetManifestResourceStream(path)
+                    ?? throw new Exception(path + " not found");
+            } catch (Exception ex) {
+                LogHelper.Error(ex.ToString());
+                throw ex;
+            }
+        }
 
+        public static Texture2D GetTextureFromStream(Stream stream) {
+            Texture2D texture2D = new Texture2D(1, 1, TextureFormat.ARGB32, false);
+            byte[] array = new byte[stream.Length];
+            stream.Read(array, 0, array.Length);
+            texture2D.filterMode = FilterMode.Bilinear;
+            texture2D.LoadImage(array);
+            texture2D.wrapMode = TextureWrapMode.Clamp; // for cursor.
+            texture2D.Apply();
+            return texture2D;
+        }
 
         public static PluginInfo GetPlugin(Assembly assembly = null) {
             if (assembly == null)

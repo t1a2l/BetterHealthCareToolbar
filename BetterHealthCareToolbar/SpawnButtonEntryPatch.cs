@@ -53,10 +53,9 @@ namespace BetterHealthCareToolbar
 				"SubBarButtonBaseHovered",
 				"SubBarButtonBasePressed"
 			};
-			var path = @"E:\Github\BetterHealthCareToolbar\BetterHealthCareToolbar\Utils\Atlas\HealthCareAtlas.png";
 			if(TextureUtils.GetAtlas("HealthCareAtlas") == null)
             {
-				TextureUtils.InitialiseAtlas(path, "HealthCareAtlas");
+				TextureUtils.InitialiseAtlas("HealthCareAtlas");
 				for(int i = 0; i < 25; i++)
 				{
 					TextureUtils.AddSpriteToAtlas(new Rect(32 * i, 0, 32, 25), SpriteNames[i], "HealthCareAtlas");
