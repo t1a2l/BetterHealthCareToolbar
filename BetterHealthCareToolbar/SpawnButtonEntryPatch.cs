@@ -21,6 +21,52 @@ namespace BetterHealthCareToolbar
 				return;
 			}
 			string mainCategoryId = "MAIN_CATEGORY";
+			var SpriteNames = new string[] {
+				"HealthCareBase",
+				"HealthCareDisabled",
+				"HealthCareFocused",
+				"HealthCareHovered",
+				"HealthCarePressed",
+				"DeathCareBase",
+				"DeathCareDisabled",
+				"DeathCareFocused",
+				"DeathCareHovered",
+				"DeathCarePressed",
+				"ChildCareBase",
+				"ChildCareDisabled",
+				"ChildCareFocused",
+				"ChildCareHovered",
+				"ChildCarePressed",
+				"ElderCareBase",
+				"ElderCareDisabled",
+				"ElderCareFocused",
+				"ElderCareHovered",
+				"ElderCarePressed",
+				"RecreationalCareBase",
+				"RecreationalCareDisabled",
+				"RecreationalCareFocused",
+				"RecreationalCareHovered",
+				"RecreationalCarePressed",
+				"SubBarButtonBase",
+				"SubBarButtonBaseDisabled",
+				"SubBarButtonBaseFocused",
+				"SubBarButtonBaseHovered",
+				"SubBarButtonBasePressed"
+			};
+			var path = @"E:\Github\BetterHealthCareToolbar\BetterHealthCareToolbar\Utils\Atlas\HealthCareAtlas.png";
+			if(TextureUtils.GetAtlas("HealthCareAtlas") == null)
+            {
+				TextureUtils.InitialiseAtlas(path, "HealthCareAtlas");
+				for(int i = 0; i < 25; i++)
+				{
+					TextureUtils.AddSpriteToAtlas(new Rect(32 * i, 0, 32, 22), SpriteNames[i], "HealthCareAtlas");
+				}
+
+				for(int i = 25; i < SpriteNames.Length; i++)
+				{
+					TextureUtils.AddSpriteToAtlas(new Rect(58 * i - 130, 0, 58, 22), SpriteNames[i], "HealthCareAtlas");
+				}
+            }
 			foreach (UIComponent tab in ___m_Strip.tabs)
 			{
 				var button = tab as UIButton;
@@ -47,6 +93,12 @@ namespace BetterHealthCareToolbar
 						return;
 					}
 					button.tooltip = HealthCareUtils.GetTooltip(cat);
+					button.atlas = TextureUtils.GetAtlas("HealthCareAtlas");
+					button.normalBgSprite = "SubBarButtonBase";
+					button.pressedBgSprite = "SubBarButtonBasePressed";
+					button.disabledBgSprite = "SubBarButtonBaseDisabled";
+					button.focusedBgSprite = "SubBarButtonBaseFocused";
+					button.hoveredBgSprite = "SubBarButtonBaseHovered";
 					HealthCareUtils.SetToolbarTabSprite(ref button, cat);
 				}
 			}

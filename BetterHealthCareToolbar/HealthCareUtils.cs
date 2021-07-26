@@ -41,44 +41,46 @@ namespace BetterHealthCareToolbar
         }
 		public static void SetToolbarTabSprite(ref UIButton button, HealthCareCategory cat)
 		{
-			var SpriteNames = new string[] {
-				"HealthCare",
-				"DeathCare",
-				"ChildCare",
-				"ElderCare",
-				"RecreationalCare",
-				"SubBarButtonBase",
-				"SubBarButtonBaseDisabled",
-				"SubBarButtonBaseFocused",
-				"SubBarButtonBaseHovered",
-				"SubBarButtonBasePressed"
-			};
-			button.atlas = TextureUtils.CreateTextureAtlas("HealthCareAtlas.png", "HealthCareAtlas", SpriteNames);
 			switch (cat)
 			{
 				case HealthCareCategory.HealthCare:
-					button.normalFgSprite = button.pressedFgSprite = button.disabledFgSprite = button.focusedFgSprite = button.hoveredFgSprite = "HealthCare";
+					button.normalFgSprite = "HealthCareBase";
+					button.disabledFgSprite = "HealthCareDisabled";
+					button.focusedFgSprite = "HealthCareFocused";
+					button.hoveredFgSprite = "HealthCareHovered";
+					button.pressedFgSprite ="HealthCarePressed";
 					break;
 				case HealthCareCategory.DeathCare:
-					button.normalFgSprite = button.pressedFgSprite = button.disabledFgSprite = button.focusedFgSprite = button.hoveredFgSprite = "DeathCare";
+					button.normalFgSprite = "DeathCareBase";
+					button.disabledFgSprite = "DeathCareDisabled";
+					button.focusedFgSprite = "DeathCareFocused";
+					button.hoveredFgSprite = "DeathCareHovered";
+					button.pressedFgSprite ="DeathCarePressed";
 					break;
 				case HealthCareCategory.ChildCare:
-					button.normalFgSprite = button.pressedFgSprite = button.disabledFgSprite = button.focusedFgSprite = button.hoveredFgSprite = "ChildCare";
+					button.normalFgSprite = "ChildCareBase";
+					button.disabledFgSprite = "ChildCareDisabled";
+					button.focusedFgSprite = "ChildCareFocused";
+					button.hoveredFgSprite = "ChildCareHovered";
+					button.pressedFgSprite ="ChildCarePressed";					
 					break;
 				case HealthCareCategory.ElderCare:
-					button.normalFgSprite = button.pressedFgSprite = button.disabledFgSprite = button.focusedFgSprite = button.hoveredFgSprite = "ElderCare";
+					button.normalFgSprite = "ElderCareBase";
+					button.disabledFgSprite = "ElderCareDisabled";
+					button.focusedFgSprite = "ElderCareFocused";
+					button.hoveredFgSprite = "ElderCareHovered";
+					button.pressedFgSprite ="ElderhCarePressed";					
 					break;
 				case HealthCareCategory.RecreationalCare:
-					button.normalFgSprite = button.pressedFgSprite = button.disabledFgSprite = button.focusedFgSprite = button.hoveredFgSprite = "RecreationalCare";
+					button.normalFgSprite = "RecreationalCareBase";
+					button.disabledFgSprite = "RecreationalCareDisabled";
+					button.focusedFgSprite = "RecreationalCareFocused";
+					button.hoveredFgSprite = "RecreationalCareHovered";
+					button.pressedFgSprite ="RecreationalCarePressed";
 					break;
 				default:
 					break;
 			}
-			button.normalBgSprite = "SubBarButtonBase";
-			button.pressedBgSprite = "SubBarButtonBaseDisabled";
-			button.disabledBgSprite = "SubBarButtonBaseFocused";
-			button.focusedBgSprite = "SubBarButtonBaseHovered";
-			button.hoveredBgSprite = "SubBarButtonBasePressed";
 		}
 
 		public static string GetTooltip(HealthCareCategory cat)
