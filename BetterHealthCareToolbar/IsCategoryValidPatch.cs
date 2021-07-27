@@ -22,7 +22,7 @@ namespace BetterHealthCareToolbar
 				return;
             }
 
-			if (!HealthCareUtils.IsDefaultHealthCareCategory(info.category))
+			if (!HealthCareUtils.IsHealthCareCategory(info.category))
 			{
 				return;
 			}

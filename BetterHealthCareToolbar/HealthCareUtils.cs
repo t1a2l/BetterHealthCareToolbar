@@ -18,11 +18,12 @@ namespace BetterHealthCareToolbar
 	{
 		public static Texture2D[] newTextures = new Texture2D[10];
 
-		public static bool IsDefaultHealthCareCategory(string cat)
+		public static bool IsHealthCareCategory(string cat)
 		{
 			switch (cat)
 			{
 				case "HealthcareDefault":
+				case "MonumentModderPack":
 					return true;
 				default:
 					return false;

@@ -36,7 +36,7 @@ namespace BetterHealthCareToolbar
 					(!toolManagerExists || info.m_availableIn.IsFlagSet(Singleton<ToolManager>.instance.m_properties.m_mode)) &&
 					info.m_placementStyle == ItemClass.Placement.Manual)
 				{
-					if (!HealthCareUtils.IsDefaultHealthCareCategory(info.category))
+					if (!HealthCareUtils.IsHealthCareCategory(info.category))
                     {
 						continue;
                     }
