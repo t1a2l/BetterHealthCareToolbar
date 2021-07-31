@@ -130,7 +130,7 @@ namespace BetterHealthCareToolbar
 				cats.Add(HealthCareCategory.ChildCare);
 				return cats;
             }
-			if(info.m_buildingAI is EldercareAI)
+			if(info.m_buildingAI is EldercareAI || info.m_buildingAI.GetType().Name.Equals("NursingHomeAI"))
             {
 				cats.Add(HealthCareCategory.ElderCare);
 				return cats;
