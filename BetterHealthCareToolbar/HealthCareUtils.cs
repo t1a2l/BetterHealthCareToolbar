@@ -24,6 +24,12 @@ namespace BetterHealthCareToolbar
 			{
 				case "HealthcareDefault":
 				case "MonumentModderPack":
+				case "MonumentCategory1":
+				case "MonumentCategory2":
+				case "MonumentCategory3":
+				case "MonumentCategory4":
+				case "MonumentCategory5":
+				case "MonumentCategory6":
 					return true;
 				default:
 					return false;
