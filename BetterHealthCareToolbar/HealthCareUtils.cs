@@ -30,6 +30,7 @@ namespace BetterHealthCareToolbar
 				case "MonumentCategory4":
 				case "MonumentCategory5":
 				case "MonumentCategory6":
+				case "BeautificationParks":
 					return true;
 				default:
 					return false;
