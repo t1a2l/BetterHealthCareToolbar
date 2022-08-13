@@ -40,14 +40,16 @@ namespace BetterHealthCareToolbar
                     {
 						continue;
                     }
-					var cats = HealthCareUtils.GetHealthCareCategories(info);
 
-					foreach (var cat in cats)
+					var cat = HealthCareUtils.GetHealthCareCategory(info);
+					if (!cat.HasValue)
 					{
-						if (!healthCareCategoriesNeeded.Contains(cat))
-						{
-							healthCareCategoriesNeeded.Add(cat);
-						}
+						continue;
+					}
+
+					if (!healthCareCategoriesNeeded.Contains(cat.Value))
+					{
+						healthCareCategoriesNeeded.Add(cat.Value);
 					}
 				}
 			}

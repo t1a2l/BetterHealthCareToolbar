@@ -70,36 +70,41 @@ namespace BetterHealthCareToolbar
 			{
 				var button = tab as UIButton;
 				if(!button)
-                {
+				{
 					// shouldn't happen?
 					continue;
-                }
-				if (button.tooltip.Contains(Mod.Identifier))
-				{
-					string s = button.tooltip.Replace(mainCategoryId + "[" + Mod.Identifier, "");
-					s = s.Replace("]:0", "");
-
-                    bool result = int.TryParse(s, out int val);
-                    if (!result)
-					{
-						Debug.Log(Mod.Identifier + "Unable to parse string: '" + button.tooltip + "'");
-						return;
-					}
-					HealthCareCategory cat = (HealthCareCategory)val;
-					if (!Enum.IsDefined(typeof(HealthCareCategory), cat))
-					{
-						Debug.Log(Mod.Identifier + "Unexpected HealthCareCategory value: '" + result + "'");
-						return;
-					}
-					button.tooltip = HealthCareUtils.GetTooltip(cat);
-					button.atlas = TextureUtils.GetAtlas("HealthCareAtlas");
-					button.normalBgSprite = "SubBarButtonBase";
-					button.pressedBgSprite = "SubBarButtonBasePressed";
-					button.disabledBgSprite = "SubBarButtonBaseDisabled";
-					button.focusedBgSprite = "SubBarButtonBaseFocused";
-					button.hoveredBgSprite = "SubBarButtonBaseHovered";
-					HealthCareUtils.SetToolbarTabSprite(ref button, cat);
 				}
+
+				if (!button.tooltip.Contains(Mod.Identifier))
+				{
+					continue;
+				}
+				
+				string s = button.tooltip.Replace(mainCategoryId + "[" + Mod.Identifier, "");
+				s = s.Replace("]:0", "");
+
+				bool result = int.TryParse(s, out int val);
+				if (!result)
+				{
+					Debug.Log(Mod.Identifier + "Unable to parse string: '" + button.tooltip + "'");
+					return;
+				}
+
+				HealthCareCategory cat = (HealthCareCategory)val;
+				if (!Enum.IsDefined(typeof(HealthCareCategory), cat))
+				{
+					Debug.Log(Mod.Identifier + "Unexpected HealthCareCategory value: '" + result + "'");
+					return;
+				}
+
+				button.tooltip = HealthCareUtils.GetTooltip(cat);
+				button.atlas = TextureUtils.GetAtlas("HealthCareAtlas");
+				button.normalBgSprite = "SubBarButtonBase";
+				button.pressedBgSprite = "SubBarButtonBasePressed";
+				button.disabledBgSprite = "SubBarButtonBaseDisabled";
+				button.focusedBgSprite = "SubBarButtonBaseFocused";
+				button.hoveredBgSprite = "SubBarButtonBaseHovered";
+				HealthCareUtils.SetToolbarTabSprite(ref button, cat);
 			}
 		}
 	}
