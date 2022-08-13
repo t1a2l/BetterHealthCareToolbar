@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using ColossalFramework.UI;
+﻿using ColossalFramework.UI;
 using UnityEngine;
-
 
 namespace BetterHealthCareToolbar
 {
@@ -115,39 +113,35 @@ namespace BetterHealthCareToolbar
 		{
 			string identifier = Mod.Identifier;
 			int num = (int)healthCareType;
-			return new GeneratedGroupPanel.GroupInfo(identifier + num.ToString(), (int)healthCareType);
+			return new GeneratedGroupPanel.GroupInfo(identifier + num, (int)healthCareType);
 		}
 
-		public static List<HealthCareCategory> GetHealthCareCategories(BuildingInfo info)
+		public static HealthCareCategory? GetHealthCareCategory(BuildingInfo info)
 		{
-			var cats = new List<HealthCareCategory>();
+			switch (info.m_buildingAI)
+			{
+				case HospitalAI:
+					return HealthCareCategory.HealthCare;
+				case HelicopterDepotAI helicopterDepotAI
+					when helicopterDepotAI.m_info.m_class.m_service == ItemClass.Service.HealthCare:
+					return HealthCareCategory.HealthCare;
+				case CemeteryAI:
+					return HealthCareCategory.DeathCare;
+				case ChildcareAI:
+					return HealthCareCategory.ChildCare;
+				case EldercareAI:
+					return HealthCareCategory.ElderCare;
+				case SaunaAI:
+					return HealthCareCategory.RecreationalCare;
+			}
 
-            if (info.m_buildingAI is HospitalAI || (info.m_buildingAI is HelicopterDepotAI helicopterDepotAI && helicopterDepotAI.m_info.m_class.m_service == ItemClass.Service.HealthCare))
-            {
-				cats.Add(HealthCareCategory.HealthCare);
-				return cats;
-            }
-			if(info.m_buildingAI is CemeteryAI)
-            {
-				cats.Add(HealthCareCategory.DeathCare);
-				return cats;
-            }
-			if(info.m_buildingAI is ChildcareAI)
-            {
-				cats.Add(HealthCareCategory.ChildCare);
-				return cats;
-            }
-			if(info.m_buildingAI is EldercareAI || info.m_buildingAI.GetType().Name.Equals("NursingHomeAI"))
-            {
-				cats.Add(HealthCareCategory.ElderCare);
-				return cats;
-            }
-			if(info.m_buildingAI is SaunaAI)
-            {
-				cats.Add(HealthCareCategory.RecreationalCare);
-				return cats;
-            }
-			return cats;
+			// Support for 'Nursing Homes with Eldercare mod'
+			if (info.m_buildingAI.GetType().Name.Equals("NursingHomeAI"))
+			{
+				return HealthCareCategory.ElderCare;
+			}
+
+			return null;
 		}
 	}
 }

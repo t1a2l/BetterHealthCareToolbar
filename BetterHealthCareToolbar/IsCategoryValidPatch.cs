@@ -10,37 +10,33 @@ namespace BetterHealthCareToolbar
 		[HarmonyPostfix]
 		public static void Postfix(BuildingInfo info, bool ignore, GeneratedScrollPanel __instance, ref bool __result, ref string ___m_Category)
 		{
-			if(ignore || !(__instance is HealthcarePanel) || !Mod.IsInGame())
-            {
-				return;
-            }
-
-			var buildingInfo = info;
-
-			if (!buildingInfo)
-            {
+			if(ignore || !(__instance is HealthcarePanel) || !Mod.IsInGame() || !info)
+			{
+				__result = false;
 				return;
             }
 
 			if (!HealthCareUtils.IsHealthCareCategory(info.category))
 			{
+				__result = false;
 				return;
 			}
 
-			var cats = HealthCareUtils.GetHealthCareCategories(info);
-
-			foreach (var cat in cats)
+			var cat = HealthCareUtils.GetHealthCareCategory(info);
+			if (!cat.HasValue)
 			{
-				var group = HealthCareUtils.CreateGroup(cat);
-
-				if (group.name == ___m_Category)
-                {
-					__result = true;
-					return;
-                }
+				__result = false;
+				return;
+			}
+			
+			var group = HealthCareUtils.CreateGroup(cat.Value);
+			if (group.name != ___m_Category)
+			{
+				__result = false;
+				return;
 			}
 
-			__result = false;
+			__result = true;
 		}
 	}
 }
