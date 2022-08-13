@@ -12,31 +12,22 @@ namespace BetterHealthCareToolbar
 		{
 			if(ignore || !(__instance is HealthcarePanel) || !Mod.IsInGame() || !info)
 			{
-				__result = false;
 				return;
-            }
+			}
 
 			if (!HealthCareUtils.IsHealthCareCategory(info.category))
 			{
-				__result = false;
 				return;
 			}
 
 			var cat = HealthCareUtils.GetHealthCareCategory(info);
 			if (!cat.HasValue)
 			{
-				__result = false;
-				return;
-			}
-			
-			var group = HealthCareUtils.CreateGroup(cat.Value);
-			if (group.name != ___m_Category)
-			{
-				__result = false;
 				return;
 			}
 
-			__result = true;
+			var group = HealthCareUtils.CreateGroup(cat.Value);
+			__result = group.name == ___m_Category;
 		}
 	}
 }
