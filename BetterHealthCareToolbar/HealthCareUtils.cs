@@ -141,6 +141,12 @@ namespace BetterHealthCareToolbar
 				return HealthCareCategory.ElderCare;
 			}
 
+			// Support for 'Orphanages with Childcare mod'
+			if (info.m_buildingAI.GetType().Name.Equals("OrphanageAI"))
+			{
+				return HealthCareCategory.ChildCare;
+			}
+
 			return null;
 		}
 	}
