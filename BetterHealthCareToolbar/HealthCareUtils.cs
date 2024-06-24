@@ -121,10 +121,8 @@ namespace BetterHealthCareToolbar
 			switch (info.m_buildingAI)
 			{
 				case HospitalAI:
-					return HealthCareCategory.HealthCare;
-				case HelicopterDepotAI helicopterDepotAI
-					when helicopterDepotAI.m_info.m_class.m_service == ItemClass.Service.HealthCare:
-					return HealthCareCategory.HealthCare;
+                case HelicopterDepotAI helicopterDepotAI when helicopterDepotAI.m_info.m_class.m_service == ItemClass.Service.HealthCare:
+                    return HealthCareCategory.HealthCare;
 				case CemeteryAI:
 					return HealthCareCategory.DeathCare;
 				case ChildcareAI:
@@ -135,19 +133,25 @@ namespace BetterHealthCareToolbar
 					return HealthCareCategory.RecreationalCare;
 			}
 
-			// Support for 'Nursing Homes with Eldercare mod'
+			// Support for 'Nursing Homes with eldercare' CimCareMod
 			if (info.m_buildingAI.GetType().Name.Equals("NursingHomeAI"))
 			{
 				return HealthCareCategory.ElderCare;
 			}
 
-			// Support for 'Orphanages with Childcare mod'
-			if (info.m_buildingAI.GetType().Name.Equals("OrphanageAI"))
+            // Support for 'Orphanages with childcare' CimCareMod
+            if (info.m_buildingAI.GetType().Name.Equals("OrphanageAI"))
 			{
 				return HealthCareCategory.ChildCare;
 			}
 
-			return null;
+            // Support for 'UniversityHospitals' CombinedAIMod
+            if (info.m_buildingAI.GetType().Name.Equals("UniversityHospitalAI"))
+            {
+                return HealthCareCategory.HealthCare;
+            }
+
+            return null;
 		}
 	}
 }
