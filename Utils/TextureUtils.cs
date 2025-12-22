@@ -13,7 +13,7 @@ namespace BetterHealthCareToolbar.Utils
 	{
         internal static Dictionary<string, UITextureAtlas> m_atlasStore = [];
 
-        static string PATH => "BetterHealthCareToolbar.BetterHealthCareToolbar.Utils.Atlas.";
+        static string PATH => "BetterHealthCareToolbar.Utils.Atlas.";
 
         static string ModPath => GetPlugin().modPath;
         public static string FILE_PATH = ModPath;
