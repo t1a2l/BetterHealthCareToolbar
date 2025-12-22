@@ -1,9 +1,9 @@
 ﻿using ColossalFramework.UI;
 using UnityEngine;
 
-namespace BetterHealthCareToolbar
+namespace BetterHealthCareToolbar.Patches
 {
-	enum HealthCareCategory
+    public enum HealthCareCategory
 	{
 		HealthCare,
 		DeathCare,
@@ -12,27 +12,18 @@ namespace BetterHealthCareToolbar
 		RecreationalCare
 	}
 
-	static class HealthCareUtils
+	public static class HealthCareUtils
 	{
 		public static Texture2D[] newTextures = new Texture2D[10];
 
 		public static bool IsHealthCareCategory(string cat)
 		{
-			switch (cat)
-			{
-				case "HealthcareDefault":
-				case "MonumentModderPack":
-				case "MonumentCategory1":
-				case "MonumentCategory2":
-				case "MonumentCategory3":
-				case "MonumentCategory4":
-				case "MonumentCategory5":
-				case "MonumentCategory6":
-				case "BeautificationParks":
-					return true;
-				default:
-					return false;
-			};
+            return cat switch
+            {
+                "HealthcareDefault" or "MonumentModderPack" or "MonumentCategory1" or "MonumentCategory2" or "MonumentCategory3" or "MonumentCategory4" or "MonumentCategory5" or "MonumentCategory6" or "BeautificationParks" => true,
+                _ => false,
+            };
+            ;
 		}
 
 		public static UITextureAtlas GetAtlas(string name)

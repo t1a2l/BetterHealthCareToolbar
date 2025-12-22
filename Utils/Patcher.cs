@@ -1,13 +1,16 @@
 ﻿using System.Reflection;
 using HarmonyLib;
 
-namespace BetterHealthCareToolbar {
-    public static class Patcher {
+namespace BetterHealthCareToolbar.Utils 
+{
+    public static class Patcher 
+    {
         private const string HarmonyId = "t1a2l.BetterHealthCareToolbar";
 
         private static bool patched = false;
 
-        public static void PatchAll() {
+        public static void PatchAll() 
+        {
             if (patched) return;
 
             UnityEngine.Debug.Log("Better HealthCare Toolbar: Patching...");
@@ -20,7 +23,8 @@ namespace BetterHealthCareToolbar {
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
-        public static void UnpatchAll() {
+        public static void UnpatchAll() 
+        {
             if (!patched) return;
 
             var harmony = new Harmony(HarmonyId);
@@ -34,16 +38,20 @@ namespace BetterHealthCareToolbar {
 
     // Random example patch
     [HarmonyPatch(typeof(SimulationManager), "CreateRelay")]
-    public static class SimulationManagerCreateRelayPatch {
-        public static void Prefix() {
+    public static class SimulationManagerCreateRelayPatch 
+    {
+        public static void Prefix() 
+        {
             UnityEngine.Debug.Log("CreateRelay Prefix");
         }
     }
 
     // Random example patch
     [HarmonyPatch(typeof(LoadingManager), "MetaDataLoaded")]
-    public static class LoadingManagerMetaDataLoadedPatch {
-        public static void Prefix() {
+    public static class LoadingManagerMetaDataLoadedPatch 
+    {
+        public static void Prefix() 
+        {
             UnityEngine.Debug.Log("MetaDataLoaded Prefix");
         }
     }

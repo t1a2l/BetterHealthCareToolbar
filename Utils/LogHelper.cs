@@ -1,5 +1,4 @@
-﻿
-namespace BetterHealthCareToolbar
+﻿namespace BetterHealthCareToolbar.Utils
 {
     internal static class LogHelper
     {

@@ -4,21 +4,16 @@ using System;
 using System.Collections.Generic;
 using static GeneratedGroupPanel;
 
-namespace BetterHealthCareToolbar
+namespace BetterHealthCareToolbar.Patches
 {
 	// This patch overrides the list of tabs that will be listed in the Roads toolbar (not their contents!).
 	[HarmonyPatch(typeof(GeneratedGroupPanel), "CollectAssets")]
-    class CollectAssetsPatch
+    public static class CollectAssetsPatch
     {
 		[HarmonyPostfix]
-        public static void Postfix(GroupFilter filter,
-								   Comparison<GroupInfo > comparison,
-								   ref PoolList<GroupInfo> __result,
-								   GeneratedGroupPanel __instance)
+        public static void Postfix(GroupFilter filter, Comparison<GroupInfo > comparison, ref PoolList<GroupInfo> __result, GeneratedGroupPanel __instance)
         {
-			if (!filter.IsFlagSet(GroupFilter.Building) ||
-				__instance.service != ItemClass.Service.HealthCare ||
-				!Mod.IsInGame() )
+			if (!filter.IsFlagSet(GroupFilter.Building) || __instance.service != ItemClass.Service.HealthCare || !Mod.IsInGame() )
 			{
 				return;
 			}

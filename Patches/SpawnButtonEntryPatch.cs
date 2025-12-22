@@ -1,21 +1,18 @@
 ﻿using System;
+using BetterHealthCareToolbar.Utils;
 using ColossalFramework.UI;
 using HarmonyLib;
 using UnityEngine;
 
-namespace BetterHealthCareToolbar
+namespace BetterHealthCareToolbar.Patches
 {
-    [HarmonyPatch(typeof(GeneratedGroupPanel), "PopulateGroups", new Type[]
-	{
-		typeof(GeneratedGroupPanel.GroupFilter),
-		typeof(Comparison<GeneratedGroupPanel.GroupInfo>)
-	})]
-	internal class SpawnButtonEntryPatch
+    [HarmonyPatch(typeof(GeneratedGroupPanel), "PopulateGroups", [typeof(GeneratedGroupPanel.GroupFilter), typeof(Comparison<GeneratedGroupPanel.GroupInfo>)])]
+    public static class SpawnButtonEntryPatch
 	{
 		[HarmonyPostfix]
 		public static void Postfix(GeneratedGroupPanel.GroupFilter filter, Comparison<GeneratedGroupPanel.GroupInfo> comparison, GeneratedGroupPanel __instance, UITabstrip ___m_Strip)
 		{
-			if (!(__instance is HealthcareGroupPanel) || !Mod.IsInGame())
+			if (__instance is not HealthcareGroupPanel || !Mod.IsInGame())
 			{
 				// We only want the "HealthCare" main tab
 				return;
@@ -53,6 +50,7 @@ namespace BetterHealthCareToolbar
 				"SubBarButtonBaseHovered",
 				"SubBarButtonBasePressed"
 			};
+
 			if(TextureUtils.GetAtlas("HealthCareAtlas") == null)
             {
 				TextureUtils.InitialiseAtlas("HealthCareAtlas");
@@ -66,6 +64,7 @@ namespace BetterHealthCareToolbar
 					TextureUtils.AddSpriteToAtlas(new Rect(58 * i - 650, 0, 58, 25), SpriteNames[i], "HealthCareAtlas");
 				}
             }
+
 			foreach (UIComponent tab in ___m_Strip.tabs)
 			{
 				var button = tab as UIButton;

@@ -1,6 +1,7 @@
 ﻿using ICities;
 using CitiesHarmony.API;
 using UnityEngine.SceneManagement;
+using BetterHealthCareToolbar.Utils;
 
 namespace BetterHealthCareToolbar
 {
@@ -10,11 +11,13 @@ namespace BetterHealthCareToolbar
 
         string IUserMod.Description => "Separate the HealthCare Toolbar into five categories - HealthCare, DeathCare, ChildCare, ElderCare and RecreationalCare";
         
-        public void OnEnabled() {
+        public void OnEnabled() 
+        {
              HarmonyHelper.DoOnHarmonyReady(() => Patcher.PatchAll());
         }
 
-        public void OnDisabled() {
+        public void OnDisabled() 
+        {
             if (HarmonyHelper.IsHarmonyInstalled) Patcher.UnpatchAll();
         }
 
